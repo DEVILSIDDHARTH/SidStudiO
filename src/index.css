@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-neon: #00ff88;
+  --color-neon-dim: rgba(0, 255, 136, 0.2);
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-hover: rgba(255, 255, 255, 0.08);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-white font-sans antialiased overflow-x-hidden;
+    /* Enable text selection */
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    /* Enable image dragging */
+    -webkit-user-drag: auto;
+    -khtml-user-drag: auto;
+    -moz-user-drag: auto;
+    -o-user-drag: auto;
+    user-drag: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-wider;
+    /* Enable text selection for headings */
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* Enable copying for all text elements */
+  p, span, div, a, button, li, td, th {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* Enable image dragging and copying */
+  img {
+    -webkit-user-drag: auto;
+    -khtml-user-drag: auto;
+    -moz-user-drag: auto;
+    -o-user-drag: auto;
+    user-drag: auto;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+    -webkit-touch-callout: default;
+    pointer-events: auto !important;
+  }
+
+  /* Enable all image interactions */
+  img, img::before, img::after {
+    pointer-events: auto !important;
+    -webkit-user-drag: auto !important;
+    user-drag: auto !important;
+    user-select: auto !important;
+  }
+
+  /* Ensure image containers don't block interactions */
+  .group img, 
+  .relative img,
+  .absolute img,
+  div[class*="aspect"] img,
+  div[class*="overflow"] img {
+    pointer-events: auto !important;
+    -webkit-user-drag: auto !important;
+    user-drag: auto !important;
+    user-select: auto !important;
+  }
+
+  /* Override any pointer-events none on images */
+  *:has(img) img {
+    pointer-events: auto !important;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-hover rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neon-dim;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-surface backdrop-blur-md border border-white/10;
+  }
+  .text-glow {
+    text-shadow: 0 0 20px var(--color-neon-dim), 0 0 40px var(--color-neon-dim);
+  }
+  .box-glow {
+    box-shadow: 0 0 20px var(--color-neon-dim), 0 0 40px var(--color-neon-dim);
+  }
+}
